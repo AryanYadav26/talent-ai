@@ -6,6 +6,7 @@ export default function App() {
   const [results, setResults] = useState([]);
 
   async function scoreCandidate(resume, jd, weights) {
+    console.log("Sending POST request...");
     const res = await fetch("/api/messages", {
       method: "POST",
       headers: {
