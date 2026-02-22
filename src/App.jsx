@@ -22,19 +22,15 @@ export default function App() {
             content: `
 You are an AI recruiter.
 
-Job Description:
-${jd}
+IMPORTANT:
+Respond with ONLY valid JSON.
+Do NOT include any explanation.
+Do NOT include markdown.
+Do NOT include backticks.
+Keys MUST be in double quotes.
 
-Candidate Resume:
-${resume}
+Return exactly this format:
 
-Scoring Weights:
-Skills: ${weights.skills}
-Experience: ${weights.experience}
-Projects: ${weights.projects}
-Education: ${weights.education}
-
-Return ONLY valid JSON like this:
 {
   "skills": number,
   "experience": number,
@@ -43,6 +39,12 @@ Return ONLY valid JSON like this:
   "total": number,
   "summary": "short explanation"
 }
+
+Job Description:
+${jd}
+
+Candidate Resume:
+${resume}
 `,
           },
         ],
@@ -50,7 +52,6 @@ Return ONLY valid JSON like this:
     });
 
     if (!res.ok) {
-      console.error("API Error:", res.status);
       return {
         total: "API Error",
         summary: "Failed to fetch score.",
@@ -60,23 +61,21 @@ Return ONLY valid JSON like this:
     const data = await res.json();
     console.log("FULL API RESPONSE:", data);
 
-    const rawText = data.content?.[0]?.text || "";
+    let rawText = data.content?.[0]?.text || "";
 
-    // Extract JSON block from Claude response
-    const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-
-    if (!jsonMatch) {
-      return {
-        total: "No JSON Found",
-        summary: rawText,
-      };
-    }
+    // Remove markdown formatting if Claude adds it
+    rawText = rawText
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
 
     try {
-      return JSON.parse(jsonMatch[0]);
+      return JSON.parse(rawText);
     } catch (err) {
+      console.error("JSON Parse Failed:", rawText);
+
       return {
-        total: "Parsing Error",
+        total: "Format Error",
         summary: rawText,
       };
     }
