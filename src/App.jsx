@@ -5,38 +5,35 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
 
-  async function scoreCandidate(resume, jd, weights) {
-    console.log("Sending POST request...");
-
-    const res = await fetch("/api/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "claude-3-haiku-20240307",
-        max_tokens: 500,
-        messages: [
-          {
-            role: "user",
-            content: `
+  async function scoreCandidate(resume, jd) {
+    try {
+      const res = await fetch("/api/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "claude-3-haiku-20240307",
+          max_tokens: 500,
+          messages: [
+            {
+              role: "user",
+              content: `
 You are an AI recruiter.
 
 IMPORTANT:
-Respond with ONLY valid JSON.
-Do NOT include any explanation.
+Respond ONLY with valid JSON.
 Do NOT include markdown.
 Do NOT include backticks.
-Keys MUST be in double quotes.
+Do NOT include explanation.
 
-Return exactly this format:
+Return EXACTLY this format:
 
 {
   "skills": number,
   "experience": number,
   "projects": number,
   "education": number,
-  "total": number,
   "summary": "short explanation"
 }
 
@@ -46,37 +43,51 @@ ${jd}
 Candidate Resume:
 ${resume}
 `,
-          },
-        ],
-      }),
-    });
+            },
+          ],
+        }),
+      });
 
-    if (!res.ok) {
+      if (!res.ok) {
+        return {
+          total: "API Error",
+          summary: "Failed to fetch response.",
+        };
+      }
+
+      const data = await res.json();
+
+      let rawText = data.content?.[0]?.text || "";
+
+      // Remove markdown formatting if present
+      rawText = rawText
+        .replace(/```json/g, "")
+        .replace(/```/g, "")
+        .trim();
+
+      const parsed = JSON.parse(rawText);
+
+      const skills = parsed.skills || 0;
+      const experience = parsed.experience || 0;
+      const projects = parsed.projects || 0;
+      const education = parsed.education || 0;
+
+      const total = skills + experience + projects + education;
+
       return {
-        total: "API Error",
-        summary: "Failed to fetch score.",
+        skills,
+        experience,
+        projects,
+        education,
+        total,
+        summary: parsed.summary || "No summary provided.",
       };
-    }
-
-    const data = await res.json();
-    console.log("FULL API RESPONSE:", data);
-
-    let rawText = data.content?.[0]?.text || "";
-
-    // Remove markdown formatting if Claude adds it
-    rawText = rawText
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim();
-
-    try {
-      return JSON.parse(rawText);
-    } catch (err) {
-      console.error("JSON Parse Failed:", rawText);
+    } catch (error) {
+      console.error("Error:", error);
 
       return {
         total: "Format Error",
-        summary: rawText,
+        summary: "Could not parse AI response.",
       };
     }
   }
@@ -100,35 +111,23 @@ ${resume}
     const jd =
       "Looking for a full-stack developer with React, Node.js, and AWS experience.";
 
-    const weights = {
-      skills: 30,
-      experience: 30,
-      projects: 20,
-      education: 20,
-    };
-
-    const scored = [];
+    const scoredResults = [];
 
     for (let i = 0; i < candidates.length; i++) {
-      try {
-        const result = await scoreCandidate(
-          candidates[i].resume,
-          jd,
-          weights
-        );
+      const result = await scoreCandidate(
+        candidates[i].resume,
+        jd
+      );
 
-        scored.push({
-          name: candidates[i].name,
-          ...result,
-        });
+      scoredResults.push({
+        name: candidates[i].name,
+        ...result,
+      });
 
-        setProgress(((i + 1) / candidates.length) * 100);
-      } catch (error) {
-        console.error("Scoring error:", error);
-      }
+      setProgress(((i + 1) / candidates.length) * 100);
     }
 
-    setResults(scored);
+    setResults(scoredResults);
     setLoading(false);
   }
 
@@ -156,7 +155,9 @@ ${resume}
             }}
           >
             <h3>{r.name}</h3>
-            <p><strong>Total Score:</strong> {r.total}</p>
+            <p>
+              <strong>Total Score:</strong> {r.total}
+            </p>
             <p>{r.summary}</p>
           </div>
         ))}
