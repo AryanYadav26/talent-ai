@@ -53,6 +53,7 @@ Return ONLY a JSON:
     }
 
    const data = await res.json();
+   console.log("FULL API RESPONSE:", data);
 
 // Anthropic returns text inside content[0].text
 const rawText = data.content?.[0]?.text || "";
