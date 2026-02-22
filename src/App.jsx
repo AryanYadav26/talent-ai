@@ -20,58 +20,56 @@ CERTIFICATIONS: AWS Certified Developer – Associate (2022)` },
   { id: 2, name: "Arjun Mehta", text: `Arjun Mehta | arjun.mehta@gmail.com | Mumbai
 Education: B.E. Computer Engineering — University of Mumbai (2024) | CGPA: 7.2/10
 Experience: Intern — TCS, Mumbai (June–Aug 2023)
-- Worked on internal HR portal using Angular and Java Spring Boot
-- Fixed 15 bugs; wrote unit tests
-Projects: E-commerce website using React and Firebase with Stripe integration.
+- Internal HR portal using Angular and Java Spring Boot; fixed 15 bugs; unit tests
+Projects: E-commerce website React + Firebase + Stripe
 Skills: HTML, CSS, JavaScript, React (basic), Java, MySQL, Git` },
 
   { id: 3, name: "Sunita Rao", text: `SUNITA RAO | sunita.rao@techmail.com | Pune
-PROFILE: Full-Stack Developer with 8 years experience in enterprise SaaS. Deep expertise in React, Node.js, AWS. Managed cross-functional teams of 10+.
+PROFILE: Full-Stack Developer 8 years enterprise SaaS. React, Node.js, AWS. Managed teams of 10+.
 EXPERIENCE:
 Engineering Manager / Lead Developer — Persistent Systems (2020–Present)
-- Architected B2B SaaS platform serving 200+ enterprise clients
-- Grew team from 3 to 12; introduced OKRs; reduced infra costs 35%; 99.9% uptime SLA
+- B2B SaaS platform 200+ enterprise clients; team grew 3 to 12; reduced infra costs 35%; 99.9% uptime
 Senior Developer — Zensar Technologies (2016–2020)
-- Cloud-native ERP with React + GraphQL + Node; CI/CD pipelines; multi-tenant PostgreSQL
-EDUCATION: M.Tech Software Engineering — COEP (2016) Distinction; B.E. CS — Pune University (2014)
-SKILLS: React, Next.js, TypeScript, GraphQL, Node.js, NestJS, AWS (certified), Docker, Kubernetes, Terraform
+- Cloud-native ERP React + GraphQL + Node; CI/CD; multi-tenant PostgreSQL
+EDUCATION: M.Tech Software Engineering COEP (2016) Distinction; B.E. CS Pune University (2014)
+SKILLS: React, Next.js, TypeScript, GraphQL, Node.js, NestJS, AWS, Docker, Kubernetes, Terraform
 CERTIFICATIONS: AWS Solutions Architect Professional | Google Cloud Associate` },
 
   { id: 4, name: "Rahul Gupta", text: `Rahul Gupta | rahul.g@outlook.com | Delhi
-Work: Startup QuickBit for 2 years as developer. React apps, Python backend. Company shut down.
-Education: Diploma in IT from polytechnic Delhi (2019)
+Work: Startup QuickBit 2 years developer — React apps, Python backend. Company shut down.
+Education: Diploma in IT polytechnic Delhi (2019)
 Skills: React, Python, basic SQL, MS Office` },
 
   { id: 5, name: "Neha Kulkarni", text: `NEHA KULKARNI | neha.kulkarni@dev.io | Hyderabad
-ABOUT: Frontend Developer 3 years, React and UI/UX specialist. Expanding to backend and cloud.
+ABOUT: Frontend Developer 3 years, React + UI/UX specialist. Expanding to backend/cloud.
 EXPERIENCE:
-Frontend Developer — Mphasis (2022–Present): Accessible React components across 5 product lines; 95+ Lighthouse score; reduced design-to-code cycle 30%
-Junior Frontend Developer — Byju's (2021–2022): Interactive quiz/video components in React
-EDUCATION: B.Sc. Computer Science — Osmania University (2021) | 78%
-SKILLS: React, TypeScript, HTML5, CSS3, Tailwind, Redux, Jest, Storybook, Node.js (learning), AWS basics, Figma, WCAG 2.1
-ACHIEVEMENTS: Won Mphasis hackathon 2023 Best UI/UX; Speaker React meetup Hyderabad 2023` },
+Frontend Developer — Mphasis (2022–Present): Accessible React components 5 product lines; 95+ Lighthouse; design-to-code cycle -30%
+Junior Frontend Developer — Byju's (2021–2022): Quiz and video components React
+EDUCATION: B.Sc. Computer Science Osmania University (2021) 78%
+SKILLS: React, TypeScript, HTML5, CSS3, Tailwind, Redux, Jest, Storybook, Node.js (learning), Figma, WCAG 2.1
+ACHIEVEMENTS: Won Mphasis hackathon 2023 Best UI/UX; React meetup speaker Hyderabad 2023` },
 
   { id: 6, name: "Vikram Singh", text: `VIKRAM SINGH | vikram.singh@email.com | Noida | Age: 28, Married
-EDUCATION: B.Tech CSE — Amity University Noida (2018) | 68%
+EDUCATION: B.Tech CSE Amity University Noida (2018) 68%
 EXPERIENCE:
-Software Developer — Cognizant (2018–2023): Java Spring Boot microservices for banking; React admin tools; AWS (S3, SQS, RDS); 15-member agile team
+Software Developer — Cognizant (2018–2023): Java Spring Boot microservices banking; React admin tools; AWS S3/SQS/RDS; 15-member agile team
 Associate Developer — Accenture (2023–Present): Node.js migration; unit tests; offshore collaboration
 SKILLS: Java, Spring Boot, React, Node.js, AWS, SQL, Docker, Git
 HOBBIES: Reading, Trekking, Photography` },
 
   { id: 7, name: "Anjali Desai", text: `ANJALI DESAI M.S. | anjali.desai@protonmail.com | San Francisco (open to relocation)
-SUMMARY: Full-Stack Engineer 6 years, 2 years at Meta. React, Node.js, distributed systems expert. Leading 5-engineer team at Series B startup.
+SUMMARY: Full-Stack Engineer 6 years incl. 2 at Meta. React, Node.js, distributed systems. Leading 5-engineer team Series B startup.
 EXPERIENCE:
 Staff Engineer — Zeta Suite (2022–Present): Lead architect real-time collaboration 50K+ DAU; 60+ accessible React components; 55% bundle reduction; hired/mentored 5 engineers
-Software Engineer — Meta (2020–2022): Internal React tooling for 70,000 employees; 1M+ events/day monitoring dashboard; React DevTools open source contributor
-Software Engineer — Flipkart (2018–2020): Checkout flows Rs.10Cr+ daily GMV; A/B testing +12% conversion
+Software Engineer — Meta (2020–2022): Internal React tooling 70,000 employees; 1M+ events/day dashboard; React DevTools open source
+Software Engineer — Flipkart (2018–2020): Checkout Rs.10Cr+ daily GMV; A/B testing +12% conversion
 EDUCATION: M.S. CS Stanford (2018); B.Tech CS IIT Bombay (2016) 9.1/10
-SKILLS: React, TypeScript, Node.js, GraphQL, System Design, Python, Go, AWS, GCP, Kubernetes, Terraform
+SKILLS: React, TypeScript, Node.js, GraphQL, Python, Go, AWS, GCP, Kubernetes, Terraform
 OPEN SOURCE: 2.1K GitHub stars react-perf-hooks; ReactConf 2023 speaker` },
 
   { id: 8, name: "Rohan Joshi", text: `Rohan Joshi | rohan.j99@gmail.com
 Education: 12th pass (2017)
-Experience: Freelance web work 5 years — WordPress and HTML/CSS websites for local businesses. Tried React once, found it difficult.
+Experience: Freelance 5 years — WordPress and HTML/CSS for local businesses. Tried React once, found it difficult.
 Skills: WordPress, HTML, CSS, Photoshop` }
 ];
 
@@ -101,15 +99,16 @@ const DIM_CLR = { experience: "#4fa8ff", skills: "#00c896", education: "#f5a623"
 const BADGE_CLR = { "Strongly Recommend": "#00c896", "Recommend": "#4fa8ff", "Consider": "#f5a623", "Not Recommended": "#ff5c5c" };
 const scoreClr = s => s >= 75 ? "#00c896" : s >= 55 ? "#4fa8ff" : s >= 35 ? "#f5a623" : "#ff5c5c";
 
-async function scoreCandidate(resume, jd, weights, apiKey) {
+async function scoreCandidate(resume, jd, weights) {
   try {
+    // No API key sent from frontend — key is in Vercel env var on the server
     const res = await fetch("/api/score", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "x-api-key": apiKey },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         model: MODEL,
         max_tokens: 1000,
-        system: "You are an expert technical recruiter AI. Respond ONLY with valid JSON. No markdown fences. No text outside JSON.",
+        system: "You are an expert technical recruiter AI. Respond ONLY with valid JSON. No markdown. No text outside the JSON object.",
         messages: [{
           role: "user",
           content: `Score this resume against the job description.
@@ -122,34 +121,37 @@ ${resume.text}
 
 SCORING WEIGHTS: Experience ${weights.experience}%, Skills ${weights.skills}%, Education ${weights.education}%, Leadership ${weights.leadership}%
 
-Return exactly this JSON (no other text):
-{"overall_score":0,"dimension_scores":{"experience":0,"skills":0,"education":0,"leadership":0},"strengths":["s1","s2","s3"],"gaps":["g1","g2"],"summary":"2 sentences","recommendation":"Strongly Recommend","bias_flags":[]}`
+Return ONLY this JSON structure, nothing else:
+{
+  "overall_score": <integer 0-100>,
+  "dimension_scores": {"experience": <0-100>, "skills": <0-100>, "education": <0-100>, "leadership": <0-100>},
+  "strengths": ["strength 1", "strength 2", "strength 3"],
+  "gaps": ["gap 1", "gap 2"],
+  "summary": "Two sentence explanation of why this candidate ranked here.",
+  "recommendation": "Strongly Recommend",
+  "bias_flags": []
+}`
         }]
       })
     });
 
     const raw = await res.text();
-
     if (!res.ok) {
       let msg = raw;
-      try { msg = JSON.parse(raw).error?.message || JSON.parse(raw).error || raw; } catch(e) {}
-      throw new Error(msg);
+      try { msg = JSON.parse(raw).error || raw; } catch (_) {}
+      throw new Error(String(msg).slice(0, 200));
     }
 
     const data = JSON.parse(raw);
-    if (!data.content || !data.content[0]) throw new Error("Unexpected API response shape");
-
     const txt = data.content[0].text.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(txt);
-    return { ...parsed, id: resume.id, name: resume.name, error: null };
-
-  } catch(e) {
+    return { ...JSON.parse(txt), id: resume.id, name: resume.name, error: null };
+  } catch (e) {
     return {
       id: resume.id, name: resume.name,
       overall_score: 0,
       dimension_scores: { experience: 0, skills: 0, education: 0, leadership: 0 },
       strengths: [], gaps: [],
-      summary: "Scoring error: " + e.message,
+      summary: "Scoring failed: " + e.message,
       recommendation: "Consider",
       bias_flags: [],
       error: e.message
@@ -160,8 +162,6 @@ Return exactly this JSON (no other text):
 export default function App() {
   const [jd, setJd] = useState(SAMPLE_JD);
   const [weights, setWeights] = useState(W_DEF);
-  const [apiKey, setApiKey] = useState("");
-  const [showKey, setShowKey] = useState(false);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -171,22 +171,20 @@ export default function App() {
   const [globalError, setGlobalError] = useState("");
 
   const totalW = Object.values(weights).reduce((a, b) => a + b, 0);
-  const keyOk = apiKey.trim().startsWith("sk-ant-");
 
   const run = useCallback(async () => {
     if (totalW !== 100) { setGlobalError("Weights must sum to 100%"); return; }
-    if (!keyOk) { setGlobalError("Enter a valid Anthropic API key (starts with sk-ant-)"); return; }
     setGlobalError(""); setLoading(true); setProgress(0); setResults([]); setTab("results");
     const scored = [];
     for (let i = 0; i < RESUMES.length; i++) {
       setScoringName(RESUMES[i].name);
-      const r = await scoreCandidate(RESUMES[i], jd, weights, apiKey.trim());
+      const r = await scoreCandidate(RESUMES[i], jd, weights);
       scored.push(r);
       setProgress(Math.round((i + 1) / RESUMES.length * 100));
       setResults([...scored].sort((a, b) => b.overall_score - a.overall_score));
     }
     setScoringName(""); setLoading(false);
-  }, [jd, weights, totalW, apiKey, keyOk]);
+  }, [jd, weights, totalW]);
 
   const tabs = ["setup", "results", ...(selected ? ["detail"] : [])];
 
@@ -213,8 +211,6 @@ export default function App() {
         .lbl{font-size:9px;color:#3a3e55;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}.pulse{animation:pulse 1.4s infinite}
         .panel{background:#0f1120;border:1px solid #1a1e30;border-radius:10px;padding:18px}
-        .sminput{flex:1;background:#0a0c12;border-radius:6px;padding:9px 12px;color:#e2e4f0;font-size:11px;font-family:inherit;border:1px solid #2a2e45}
-        .smbtn{background:#1a1e30;border:none;border-radius:6px;padding:0 12px;color:#888;font-size:10px;font-family:inherit;cursor:pointer;white-space:nowrap}
       `}</style>
 
       {/* NAV */}
@@ -238,34 +234,13 @@ export default function App() {
 
         {/* SETUP */}
         {tab==="setup" && (
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 330px", gap:24 }} className="fi">
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 310px", gap:24 }} className="fi">
             <div>
               <div className="lbl">Job Description</div>
-              <textarea value={jd} onChange={e=>setJd(e.target.value)} style={{ width:"100%", minHeight:480, background:"#0f1120", border:"1px solid #1a1e30", borderRadius:10, padding:18, color:"#c0c3d6", fontSize:12, lineHeight:1.8, resize:"vertical" }} />
+              <textarea value={jd} onChange={e=>setJd(e.target.value)}
+                style={{ width:"100%", minHeight:480, background:"#0f1120", border:"1px solid #1a1e30", borderRadius:10, padding:18, color:"#c0c3d6", fontSize:12, lineHeight:1.8, resize:"vertical" }} />
             </div>
             <div style={{ display:"flex", flexDirection:"column", gap:14 }}>
-
-              {/* API KEY */}
-              <div className="panel">
-                <div className="lbl">Anthropic API Key</div>
-                <div style={{ display:"flex", gap:8, marginBottom:8 }}>
-                  <input
-                    className="sminput"
-                    style={{ borderColor: apiKey ? (keyOk ? "#00c896" : "#ff5c5c") : "#2a2e45" }}
-                    type={showKey?"text":"password"}
-                    placeholder="sk-ant-api03-..."
-                    value={apiKey}
-                    onChange={e => { setApiKey(e.target.value); setGlobalError(""); }}
-                  />
-                  <button className="smbtn" onClick={()=>setShowKey(v=>!v)}>{showKey?"Hide":"Show"}</button>
-                </div>
-                {apiKey && !keyOk && <div style={{ fontSize:10, color:"#ff5c5c", marginBottom:4 }}>Must start with sk-ant-</div>}
-                {keyOk && <div style={{ fontSize:10, color:"#00c896", marginBottom:4 }}>✓ Key valid</div>}
-                <div style={{ fontSize:9, color:"#3a3e55", lineHeight:1.8 }}>
-                  Get key → console.anthropic.com → API Keys<br/>
-                  Only used for this session. Never stored.
-                </div>
-              </div>
 
               {/* WEIGHTS */}
               <div className="panel">
@@ -292,12 +267,12 @@ export default function App() {
                 </div>
               )}
 
-              <button className="pbtn" onClick={run} disabled={loading||totalW!==100||!keyOk}>
+              <button className="pbtn" onClick={run} disabled={loading||totalW!==100}>
                 {loading ? `Scoring ${progress}%...` : "▶  Run AI Screening"}
               </button>
 
-              <div style={{ fontSize:9, color:"#3a3e55", lineHeight:2.2 }}>
-                {RESUMES.length} CANDIDATES LOADED
+              <div className="panel" style={{ fontSize:9, color:"#3a3e55", lineHeight:2.2 }}>
+                <div className="lbl">Candidates Loaded</div>
                 {RESUMES.map(r=><div key={r.id} style={{ color:"#444" }}>· {r.name}</div>)}
               </div>
             </div>
@@ -334,7 +309,7 @@ export default function App() {
                       <span style={{ fontSize:15, fontWeight:500 }}>{c.name}</span>
                       <span className="badge" style={{ background:(BADGE_CLR[c.recommendation]||"#888")+"20", color:BADGE_CLR[c.recommendation]||"#888", border:`1px solid ${BADGE_CLR[c.recommendation]||"#888"}40` }}>{c.recommendation}</span>
                       {c.bias_flags?.length>0 && <span className="badge" style={{ background:"#ff5c5c15", color:"#ff5c5c", border:"1px solid #ff5c5c30" }}>⚠ Bias</span>}
-                      {c.error && <span className="badge" style={{ background:"#ff5c5c15", color:"#ff9980", border:"1px solid #ff5c5c30", fontSize:9 }} title={c.error}>Error — click for details</span>}
+                      {c.error && <span className="badge" style={{ background:"#ff5c5c15", color:"#ff9980", border:"1px solid #ff5c5c30", fontSize:9 }} title={c.error}>Error</span>}
                     </div>
                     <div style={{ fontSize:11, color:"#555", marginBottom:12, lineHeight:1.6 }}>{c.summary}</div>
                     <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:10 }}>
@@ -380,17 +355,12 @@ export default function App() {
               </div>
               <span className="badge" style={{ marginLeft:"auto", fontSize:12, padding:"6px 16px", background:(BADGE_CLR[selected.recommendation]||"#888")+"20", color:BADGE_CLR[selected.recommendation]||"#888", border:`1px solid ${BADGE_CLR[selected.recommendation]||"#888"}40` }}>{selected.recommendation}</span>
             </div>
-
             {selected.error && (
               <div style={{ background:"#ff5c5c11", border:"1px solid #ff5c5c44", borderRadius:10, padding:20, marginBottom:16 }}>
                 <div className="lbl" style={{ color:"#ff5c5caa" }}>Scoring Error</div>
                 <div style={{ fontSize:12, color:"#ffaa88" }}>{selected.error}</div>
-                <div style={{ fontSize:11, color:"#555", marginTop:8 }}>
-                  Check your API key is correct and has credits at console.anthropic.com
-                </div>
               </div>
             )}
-
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16, marginBottom:16 }}>
               <div className="panel">
                 <div className="lbl">Dimension Scores</div>
@@ -425,17 +395,15 @@ export default function App() {
                 </div>
               </div>
             </div>
-
             {selected.bias_flags?.length>0&&(
               <div style={{ background:"#ff5c5c08", border:"1px solid #ff5c5c25", borderRadius:10, padding:20, marginBottom:16 }}>
                 <div className="lbl" style={{ color:"#ff5c5caa" }}>⚠ Bias Audit</div>
-                <div style={{ fontSize:11, color:"#666", marginBottom:10 }}>Non-job-relevant attributes detected — should not influence hiring:</div>
+                <div style={{ fontSize:11, color:"#666", marginBottom:10 }}>Non-job-relevant attributes — should not influence decisions:</div>
                 {selected.bias_flags.map((f,i)=>(
                   <div key={i} style={{ fontSize:12, color:"#ffaa88", marginBottom:6, paddingLeft:12, borderLeft:"2px solid #ff5c5c40" }}>{f}</div>
                 ))}
               </div>
             )}
-
             <div className="panel">
               <div className="lbl">AI Summary</div>
               <div style={{ fontSize:13, color:"#c0c3d6", lineHeight:1.9 }}>{selected.summary}</div>
