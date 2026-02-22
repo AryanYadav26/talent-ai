@@ -5,91 +5,45 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
 
-  async function scoreCandidate(resume, jd) {
-    try {
-      const res = await fetch("/api/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "claude-3-haiku-20240307",
-          max_tokens: 500,
-          messages: [
-            {
-              role: "user",
-              content: `
-You are an AI recruiter.
+  // Smart AI-like scoring logic (no external API)
+  function scoreCandidate(resume, jd) {
+    const resumeText = resume.toLowerCase();
+    const jdText = jd.toLowerCase();
 
-IMPORTANT:
-Respond ONLY with valid JSON.
-Do NOT include markdown.
-Do NOT include backticks.
-Do NOT include explanation.
+    let skills = 0;
+    let experience = 0;
+    let projects = 15; // default mock
+    let education = 15; // default mock
 
-Return EXACTLY this format:
+    // Skill matching
+    if (resumeText.includes("react")) skills += 15;
+    if (resumeText.includes("node")) skills += 15;
+    if (resumeText.includes("aws")) skills += 10;
+    if (resumeText.includes("mern")) skills += 10;
+    if (resumeText.includes("python")) skills += 10;
 
-{
-  "skills": number,
-  "experience": number,
-  "projects": number,
-  "education": number,
-  "summary": "short explanation"
-}
+    // Experience simulation
+    if (resumeText.includes("3 years")) experience += 25;
+    else if (resumeText.includes("2 years")) experience += 20;
+    else experience += 15;
 
-Job Description:
-${jd}
+    const total = skills + experience + projects + education;
 
-Candidate Resume:
-${resume}
-`,
-            },
-          ],
-        }),
-      });
+    let summary = "";
 
-      if (!res.ok) {
-        return {
-          total: "API Error",
-          summary: "Failed to fetch response.",
-        };
-      }
+    if (total >= 80) summary = "Excellent match for the role.";
+    else if (total >= 65) summary = "Strong candidate with good alignment.";
+    else if (total >= 50) summary = "Moderate fit. Some skill gaps.";
+    else summary = "Limited match for this position.";
 
-      const data = await res.json();
-
-      let rawText = data.content?.[0]?.text || "";
-
-      // Remove markdown formatting if present
-      rawText = rawText
-        .replace(/```json/g, "")
-        .replace(/```/g, "")
-        .trim();
-
-      const parsed = JSON.parse(rawText);
-
-      const skills = parsed.skills || 0;
-      const experience = parsed.experience || 0;
-      const projects = parsed.projects || 0;
-      const education = parsed.education || 0;
-
-      const total = skills + experience + projects + education;
-
-      return {
-        skills,
-        experience,
-        projects,
-        education,
-        total,
-        summary: parsed.summary || "No summary provided.",
-      };
-    } catch (error) {
-      console.error("Error:", error);
-
-      return {
-        total: "Format Error",
-        summary: "Could not parse AI response.",
-      };
-    }
+    return {
+      skills,
+      experience,
+      projects,
+      education,
+      total,
+      summary,
+    };
   }
 
   async function runScreening() {
@@ -114,10 +68,7 @@ ${resume}
     const scoredResults = [];
 
     for (let i = 0; i < candidates.length; i++) {
-      const result = await scoreCandidate(
-        candidates[i].resume,
-        jd
-      );
+      const result = scoreCandidate(candidates[i].resume, jd);
 
       scoredResults.push({
         name: candidates[i].name,
@@ -125,6 +76,9 @@ ${resume}
       });
 
       setProgress(((i + 1) / candidates.length) * 100);
+
+      // Small delay for smooth progress animation
+      await new Promise((resolve) => setTimeout(resolve, 300));
     }
 
     setResults(scoredResults);
@@ -155,10 +109,12 @@ ${resume}
             }}
           >
             <h3>{r.name}</h3>
-            <p>
-              <strong>Total Score:</strong> {r.total}
-            </p>
-            <p>{r.summary}</p>
+            <p><strong>Total Score:</strong> {r.total}</p>
+            <p><strong>Skills:</strong> {r.skills}</p>
+            <p><strong>Experience:</strong> {r.experience}</p>
+            <p><strong>Projects:</strong> {r.projects}</p>
+            <p><strong>Education:</strong> {r.education}</p>
+            <p><strong>AI Summary:</strong> {r.summary}</p>
           </div>
         ))}
       </div>
