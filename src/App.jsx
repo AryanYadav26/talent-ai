@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 
 const ANTHROPIC_MODEL = "claude-sonnet-4-20250514";
+const PROXY = "https://api.anthropic.com/v1/messages";
 
 const SAMPLE_RESUMES = [
   {
@@ -154,10 +155,10 @@ const BADGE_COLOR = {
   "Not Recommended": "#ff5c5c"
 };
 
-async function scoreCandidate(resume, jd, weights) {
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
+async function scoreCandidate(resume, jd, weights, apiKey) {
+  const res = await fetch(PROXY, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
     body: JSON.stringify({
       model: ANTHROPIC_MODEL,
       max_tokens: 1000,
@@ -200,6 +201,8 @@ const scoreColor = s => s >= 75 ? "#00c896" : s >= 55 ? "#4fa8ff" : s >= 35 ? "#
 
 export default function App() {
   const [jd, setJd] = useState(SAMPLE_JD);
+  const [apiKey, setApiKey] = useState("");
+  const [keySaved, setKeySaved] = useState(false);
   const [weights, setWeights] = useState(WEIGHTS_DEFAULT);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -212,16 +215,17 @@ export default function App() {
 
   const runScreening = useCallback(async () => {
     if (totalW !== 100) { setError("Weights must sum to 100%"); return; }
+    if (!apiKey.startsWith("sk-ant-")) { setError("Please enter a valid Anthropic API key (starts with sk-ant-)"); return; }
     setError(""); setLoading(true); setProgress(0); setResults([]); setTab("results");
     const scored = [];
     for (let i = 0; i < SAMPLE_RESUMES.length; i++) {
-      const r = await scoreCandidate(SAMPLE_RESUMES[i], jd, weights);
+      const r = await scoreCandidate(SAMPLE_RESUMES[i], jd, weights, apiKey);
       scored.push(r);
       setProgress(Math.round(((i + 1) / SAMPLE_RESUMES.length) * 100));
       setResults([...scored].sort((a, b) => b.overall_score - a.overall_score));
     }
     setLoading(false);
-  }, [jd, weights, totalW]);
+  }, [jd, weights, totalW, apiKey]);
 
   const tabs = ["setup", "results", ...(selected ? ["detail"] : [])];
 
@@ -294,6 +298,31 @@ export default function App() {
                 {totalW !== 100 && <div style={{ color: "#ff5c5c", fontSize: 10, marginTop: 6 }}>Adjust sliders to reach 100%</div>}
               </div>
               {error && <div style={{ color: "#ff5c5c", fontSize: 11, marginBottom: 10 }}>{error}</div>}
+
+              {/* API Key Input */}
+              <div style={{ background: "#0f1120", border: "1px solid #1a1e30", borderRadius: 10, padding: 16, marginBottom: 12 }}>
+                <div style={{ fontSize: 10, color: "#3a3e55", letterSpacing: 2, marginBottom: 8 }}>ANTHROPIC API KEY</div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <input
+                    type="password"
+                    placeholder="sk-ant-api03-..."
+                    value={apiKey}
+                    onChange={e => { setApiKey(e.target.value); setKeySaved(false); }}
+                    style={{
+                      flex: 1, background: "#0a0c12", border: `1px solid ${keySaved ? "#00c896" : "#2a2e45"}`,
+                      borderRadius: 6, padding: "8px 12px", color: "#e2e4f0", fontSize: 11,
+                      fontFamily: "inherit", outline: "none"
+                    }}
+                  />
+                  <button
+                    onClick={() => { if (apiKey.startsWith("sk-ant-")) setKeySaved(true); else setError("Invalid key format"); }}
+                    style={{ background: keySaved ? "#00c896" : "#1a1e30", border: "none", borderRadius: 6, padding: "8px 14px", color: keySaved ? "#0a0c12" : "#888", fontSize: 10, fontFamily: "inherit", cursor: "pointer", letterSpacing: 1, whiteSpace: "nowrap" }}
+                  >{keySaved ? "✓ Saved" : "Save"}</button>
+                </div>
+                <div style={{ fontSize: 9, color: "#3a3e55", marginTop: 6 }}>
+                  Get your key at console.anthropic.com · Key stays in your browser only
+                </div>
+              </div>
               <button className="btn" onClick={runScreening} disabled={loading || totalW !== 100}>
                 {loading ? `Analyzing... ${progress}%` : "Run AI Screening →"}
               </button>
