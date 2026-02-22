@@ -7,6 +7,7 @@ export default function App() {
 
   async function scoreCandidate(resume, jd, weights) {
     console.log("Sending POST request...");
+
     const res = await fetch("/api/messages", {
       method: "POST",
       headers: {
@@ -33,7 +34,7 @@ Experience: ${weights.experience}
 Projects: ${weights.projects}
 Education: ${weights.education}
 
-Return ONLY a JSON:
+Return ONLY valid JSON like this:
 {
   "skills": number,
   "experience": number,
@@ -49,27 +50,36 @@ Return ONLY a JSON:
     });
 
     if (!res.ok) {
-      throw new Error("API request failed");
+      console.error("API Error:", res.status);
+      return {
+        total: "API Error",
+        summary: "Failed to fetch score.",
+      };
     }
 
-   const data = await res.json();
-   console.log("FULL API RESPONSE:", data);
+    const data = await res.json();
+    console.log("FULL API RESPONSE:", data);
 
-// Anthropic returns text inside content[0].text
-const rawText = data.content?.[0]?.text || "";
+    const rawText = data.content?.[0]?.text || "";
 
-// Try to extract JSON from text
-let parsed;
-try {
-  parsed = JSON.parse(rawText);
-} catch (e) {
-  parsed = {
-    total: "Parsing Error",
-    summary: rawText
-  };
-}
+    // Extract JSON block from Claude response
+    const jsonMatch = rawText.match(/\{[\s\S]*\}/);
 
-return parsed;
+    if (!jsonMatch) {
+      return {
+        total: "No JSON Found",
+        summary: rawText,
+      };
+    }
+
+    try {
+      return JSON.parse(jsonMatch[0]);
+    } catch (err) {
+      return {
+        total: "Parsing Error",
+        summary: rawText,
+      };
+    }
   }
 
   async function runScreening() {
@@ -88,7 +98,8 @@ return parsed;
       { name: "Candidate 8", resume: "AI/ML engineer with TensorFlow experience." },
     ];
 
-    const jd = "Looking for a full-stack developer with React, Node.js, and AWS experience.";
+    const jd =
+      "Looking for a full-stack developer with React, Node.js, and AWS experience.";
 
     const weights = {
       skills: 30,
@@ -101,7 +112,7 @@ return parsed;
 
     for (let i = 0; i < candidates.length; i++) {
       try {
-        const data = await scoreCandidate(
+        const result = await scoreCandidate(
           candidates[i].resume,
           jd,
           weights
@@ -109,12 +120,12 @@ return parsed;
 
         scored.push({
           name: candidates[i].name,
-          ...data,
+          ...result,
         });
 
         setProgress(((i + 1) / candidates.length) * 100);
       } catch (error) {
-        console.error(error);
+        console.error("Scoring error:", error);
       }
     }
 
@@ -146,7 +157,7 @@ return parsed;
             }}
           >
             <h3>{r.name}</h3>
-            <p>Total Score: {r.total}</p>
+            <p><strong>Total Score:</strong> {r.total}</p>
             <p>{r.summary}</p>
           </div>
         ))}
