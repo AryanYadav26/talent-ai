@@ -52,7 +52,23 @@ Return ONLY a JSON:
       throw new Error("API request failed");
     }
 
-    return res.json();
+   const data = await res.json();
+
+// Anthropic returns text inside content[0].text
+const rawText = data.content?.[0]?.text || "";
+
+// Try to extract JSON from text
+let parsed;
+try {
+  parsed = JSON.parse(rawText);
+} catch (e) {
+  parsed = {
+    total: "Parsing Error",
+    summary: rawText
+  };
+}
+
+return parsed;
   }
 
   async function runScreening() {
